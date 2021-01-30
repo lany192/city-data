@@ -1,16 +1,16 @@
-package com.jx;
+package com.github.lany192;
 
 import java.util.List;
 
 /**
- * 地级市
+ * 省份
  * @author jx on 2018/4/12.
  */
 
-class City {
+class Province {
     private String code;
     private String name;
-    private List<Area> areaList;
+    private List<City> cityList;
 
     public String getCode() {
         return code;
@@ -28,11 +28,11 @@ class City {
         this.name = name;
     }
 
-    public List<Area> getAreaList() {
-        return areaList;
+    public List<City> getCityList() {
+        return cityList;
     }
 
-    public void setAreaList(List<Area> areaList) {
-        this.areaList = areaList;
+    public void setCityList(List<City> cityList) {
+        this.cityList = cityList;
     }
 }

@@ -1,4 +1,4 @@
-package com.jx;
+package com.github.lany192;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -56,7 +56,7 @@ public class MainGetData {
      */
 
     private static List<Province> processData(List<String> stringName, List<String> stringCode) {
-        List<Province> provinceList = new ArrayList<Province>();
+        List<Province> provinceList = new ArrayList<>();
 
 
         //获取省
@@ -68,7 +68,7 @@ public class MainGetData {
                 province.setCode(provinceCode);
                 province.setName(provinceName);
                 provinceList.add(province);
-                List<City> cities = new ArrayList<City>();
+                List<City> cities = new ArrayList<>();
                 province.setCityList(cities);
             }
         }
@@ -81,7 +81,7 @@ public class MainGetData {
             //直辖市 城市和省份名称一样
             if (provinceName.contains("北京") || provinceName.contains("上海") || provinceName.contains("天津") || provinceName.contains("重庆")) {
                 City city = new City();
-                List<Area> areas = new ArrayList<Area>();
+                List<Area> areas = new ArrayList<>();
                 city.setName(provinceName);
                 city.setCode(provinceCode);
                 city.setAreaList(areas);
@@ -94,7 +94,7 @@ public class MainGetData {
                         if (cityCode.startsWith(provinceCode.substring(0, 2))) {
                             if (cityCode.endsWith("00")) {
                                 City city = new City();
-                                List<Area> areas = new ArrayList<Area>();
+                                List<Area> areas = new ArrayList<>();
                                 city.setName(cityName);
                                 city.setCode(cityCode);
                                 city.setAreaList(areas);

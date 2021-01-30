@@ -1,4 +1,4 @@
-package com.jx;
+package com.github.lany192;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
