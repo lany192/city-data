@@ -2,14 +2,12 @@ package com.github.lany192;
 
 import java.util.List;
 
-/**
- * 区，县
- * @author jx on 2018/4/12.
- */
 
-class Area {
+
+public class Area {
     private String code;
     private String name;
+    private List<Area> children;
 
     public String getCode() {
         return code;
@@ -27,5 +25,12 @@ class Area {
         this.name = name;
     }
 
+    public List<Area> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Area> children) {
+        this.children = children;
+    }
 }
 
