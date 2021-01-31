@@ -70,12 +70,12 @@ public class MainGetData {
             String provinceCode = value.getCode();
             //直辖市 城市和省份名称一样
             if (provinceName.contains("北京") || provinceName.contains("上海") || provinceName.contains("天津") || provinceName.contains("重庆")) {
-                Area city = new Area();
-                List<Area> areas = new ArrayList<>();
-                city.setName(provinceName);
-                city.setCode(provinceCode);
-                city.setChildren(areas);
-                value.getChildren().add(city);
+//                Area city = new Area();
+//                List<Area> areas = new ArrayList<>();
+//                city.setName(provinceName);
+//                city.setCode(provinceCode);
+//                city.setChildren(areas);
+//                value.getChildren().add(city);
             } else {
                 for (int j = 0; j < stringCode.size(); j++) {
                     String cityName = stringName.get(j);
