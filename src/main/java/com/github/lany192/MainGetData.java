@@ -11,8 +11,8 @@ import java.util.List;
 public class MainGetData {
     public static void main(String[] args) {
         try {
-            //2020年1月中华人民共和国县以上行政区划代码网页
-            Document doc = Jsoup.connect("http://www.mca.gov.cn//article/sj/xzqh/2020/2020/2020092500801.html").maxBodySize(0).get();
+            //2020年11月中华人民共和国县以上行政区划代码网页
+            Document doc = Jsoup.connect("http://preview.www.mca.gov.cn/article/sj/xzqh/2020/2020/202101041104.html").maxBodySize(0).get();
             Elements elements = doc.getElementsByClass("xl7024734");
             //省和市
             Elements elementsProAndArea = doc.getElementsByClass("xl7124734");
@@ -36,7 +36,7 @@ public class MainGetData {
                 throw new RuntimeException("数据错误");
             }
             List<Area> provinceList = processData(stringName, stringCode);
-            String path = FileUtils.getProjectDir() + "/2020年8月中华人民共和国县以上行政区划代码" + ".json";
+            String path = FileUtils.getProjectDir() + "/2020年11月中华人民共和国县以上行政区划代码" + ".json";
             JSONFormatUtils.jsonWriter(provinceList, path);
         } catch (IOException e) {
             e.printStackTrace();
