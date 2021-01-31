@@ -13,9 +13,9 @@ public class MainGetData {
         try {
             //2020年11月中华人民共和国县以上行政区划代码网页
             Document doc = Jsoup.connect("http://preview.www.mca.gov.cn/article/sj/xzqh/2020/2020/202101041104.html").maxBodySize(0).get();
-            Elements elements = doc.getElementsByClass("xl7024734");
+            Elements elements = doc.getElementsByClass("xl6532423");
             //省和市
-            Elements elementsProAndArea = doc.getElementsByClass("xl7124734");
+            Elements elementsProAndArea = doc.getElementsByClass("xl7032423");
             List<String> stringListProAndArea = elementsProAndArea.eachText();
             List<String> stringList = elements.eachText();
             List<String> stringName = new ArrayList<>();
