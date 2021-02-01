@@ -37,8 +37,12 @@ public class MainGetData {
                 throw new RuntimeException("数据错误");
             }
             List<Area> provinceList = processData(stringName, stringCode);
+            Area country = new Area();
+            country.setId("0");
+            country.setName("中国");
+            country.setSubarea(provinceList);
             String path = FileUtils.getProjectDir() + "/2020年11月中华人民共和国县以上行政区划代码" + ".json";
-            JSONFormatUtils.jsonWriter(provinceList, path);
+            JSONFormatUtils.jsonWriter(country, path);
         } catch (IOException e) {
             e.printStackTrace();
         }

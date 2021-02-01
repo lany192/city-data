@@ -8,7 +8,7 @@ public class Area {
     /**
      * 地区编码
      */
-    private String id;
+    private int id;
     /**
      * 地区名称
      */
@@ -19,11 +19,11 @@ public class Area {
     private List<Area> subarea;
 
     public String getId() {
-        return id;
+        return String.valueOf(id);
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = Integer.parseInt(id);
     }
 
     public String getName() {
