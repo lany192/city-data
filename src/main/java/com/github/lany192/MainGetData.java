@@ -43,8 +43,18 @@ public class MainGetData {
             country.setSubarea(provinceList);
             String path = FileUtils.getProjectDir() + "/2020年11月中华人民共和国县以上行政区划代码" + ".json";
             JSONFormatUtils.jsonWriter(country, path);
+            printSQl(country, country.getSubarea());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void printSQl(Area area, List<Area> subarea) {
+        if (subarea != null && subarea.size() > 0) {
+            for (Area item : subarea) {
+                System.out.println("INSERT INTO `sys_area` VALUES (" + item.getId() + ", " + area.getId() + ", '" + item.getName() + "');");
+                printSQl(item, item.getSubarea());
+            }
         }
     }
 
