@@ -5,16 +5,25 @@ import java.util.List;
 
 
 public class Area {
-    private String code;
+    /**
+     * 地区编码
+     */
+    private String id;
+    /**
+     * 地区名称
+     */
     private String name;
+    /**
+     * 该地区下辖地区
+     */
     private List<Area> children;
 
-    public String getCode() {
-        return code;
+    public String getId() {
+        return id;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

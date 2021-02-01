@@ -55,7 +55,7 @@ public class MainGetData {
             String provinceCode = stringCode.get(i);
             if (provinceCode.endsWith("0000")) {
                 Area province = new Area();
-                province.setCode(provinceCode);
+                province.setId(provinceCode);
                 province.setName(provinceName);
                 provinceList.add(province);
                 List<Area> cities = new ArrayList<>();
@@ -67,7 +67,7 @@ public class MainGetData {
         //获取市
         for (Area value : provinceList) {
             String provinceName = value.getName();
-            String provinceCode = value.getCode();
+            String provinceCode = value.getId();
             //直辖市 城市和省份名称一样
             if (provinceName.contains("北京") || provinceName.contains("上海") || provinceName.contains("天津") || provinceName.contains("重庆")) {
 //                Area city = new Area();
@@ -86,7 +86,7 @@ public class MainGetData {
                                 Area city = new Area();
                                 List<Area> areas = new ArrayList<>();
                                 city.setName(cityName);
-                                city.setCode(cityCode);
+                                city.setId(cityCode);
                                 city.setChildren(areas);
                                 value.getChildren().add(city);
                             }
@@ -102,23 +102,23 @@ public class MainGetData {
             List<Area> cities = province.getChildren();
             for (Area city : cities) {
                 //遍历获取县区
-                String cityCode = city.getCode();
+                String cityCode = city.getId();
                 String cityName = city.getName();
                 for (int k = 0; k < stringCode.size(); k++) {
                     String areaName = stringName.get(k);
                     String areaCode = stringCode.get(k);
                     if (cityName.contains("北京") || cityName.contains("上海") || cityName.contains("天津") || cityName.contains("重庆")) {
-                        if (!province.getCode().equals(areaCode) && areaCode.startsWith(province.getCode().substring(0, 2))) {
+                        if (!province.getId().equals(areaCode) && areaCode.startsWith(province.getId().substring(0, 2))) {
                             Area area = new Area();
                             area.setName(areaName);
-                            area.setCode(areaCode);
+                            area.setId(areaCode);
                             city.getChildren().add(area);
                         }
                     } else {
                         if (!areaCode.equals(cityCode) && areaCode.startsWith(cityCode.substring(0, 4))) {
                             Area area = new Area();
                             area.setName(areaName);
-                            area.setCode(areaCode);
+                            area.setId(areaCode);
                             city.getChildren().add(area);
                         }
                     }
@@ -134,15 +134,15 @@ public class MainGetData {
         List<String> stringCodeList = new ArrayList<>(stringCode);
         for (Area province : provinceList) {
             stringNameList.remove(province.getName());
-            stringCodeList.remove(province.getCode());
+            stringCodeList.remove(province.getId());
             List<Area> cities = province.getChildren();
             for (Area city : cities) {
                 stringNameList.remove(city.getName());
-                stringCodeList.remove(city.getCode());
+                stringCodeList.remove(city.getId());
                 List<Area> listArea = city.getChildren();
                 for (Area area : listArea) {
                     stringNameList.remove(area.getName());
-                    stringCodeList.remove(area.getCode());
+                    stringCodeList.remove(area.getId());
                 }
             }
         }
@@ -150,11 +150,11 @@ public class MainGetData {
         //处理石河子 特殊 市，Area Code 不以00结尾
         for (Area province : provinceList) {
             for (int k = 0; k < stringCodeList.size(); k++) {
-                if (stringCodeList.get(k).startsWith(province.getCode().substring(0, 2))) {
+                if (stringCodeList.get(k).startsWith(province.getId().substring(0, 2))) {
                     Area city = new Area();
                     List<Area> areas = new ArrayList<>();
                     city.setName(stringNameList.get(k));
-                    city.setCode(stringCodeList.get(k));
+                    city.setId(stringCodeList.get(k));
                     city.setChildren(areas);
                     province.getChildren().add(city);
                 }
