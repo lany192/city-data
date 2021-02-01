@@ -59,7 +59,7 @@ public class MainGetData {
                 province.setName(provinceName);
                 provinceList.add(province);
                 List<Area> cities = new ArrayList<>();
-                province.setChildren(cities);
+                province.setSubarea(cities);
             }
         }
 
@@ -75,7 +75,7 @@ public class MainGetData {
 //                city.setName(provinceName);
 //                city.setCode(provinceCode);
 //                city.setChildren(areas);
-//                value.getChildren().add(city);
+//                value.getSubarea().add(city);
             } else {
                 for (int j = 0; j < stringCode.size(); j++) {
                     String cityName = stringName.get(j);
@@ -87,8 +87,8 @@ public class MainGetData {
                                 List<Area> areas = new ArrayList<>();
                                 city.setName(cityName);
                                 city.setId(cityCode);
-                                city.setChildren(areas);
-                                value.getChildren().add(city);
+                                city.setSubarea(areas);
+                                value.getSubarea().add(city);
                             }
                         }
                     }
@@ -99,7 +99,7 @@ public class MainGetData {
 
         //获取区县
         for (Area province : provinceList) {
-            List<Area> cities = province.getChildren();
+            List<Area> cities = province.getSubarea();
             for (Area city : cities) {
                 //遍历获取县区
                 String cityCode = city.getId();
@@ -112,14 +112,14 @@ public class MainGetData {
                             Area area = new Area();
                             area.setName(areaName);
                             area.setId(areaCode);
-                            city.getChildren().add(area);
+                            city.getSubarea().add(area);
                         }
                     } else {
                         if (!areaCode.equals(cityCode) && areaCode.startsWith(cityCode.substring(0, 4))) {
                             Area area = new Area();
                             area.setName(areaName);
                             area.setId(areaCode);
-                            city.getChildren().add(area);
+                            city.getSubarea().add(area);
                         }
                     }
 
@@ -135,11 +135,11 @@ public class MainGetData {
         for (Area province : provinceList) {
             stringNameList.remove(province.getName());
             stringCodeList.remove(province.getId());
-            List<Area> cities = province.getChildren();
+            List<Area> cities = province.getSubarea();
             for (Area city : cities) {
                 stringNameList.remove(city.getName());
                 stringCodeList.remove(city.getId());
-                List<Area> listArea = city.getChildren();
+                List<Area> listArea = city.getSubarea();
                 for (Area area : listArea) {
                     stringNameList.remove(area.getName());
                     stringCodeList.remove(area.getId());
@@ -155,8 +155,8 @@ public class MainGetData {
                     List<Area> areas = new ArrayList<>();
                     city.setName(stringNameList.get(k));
                     city.setId(stringCodeList.get(k));
-                    city.setChildren(areas);
-                    province.getChildren().add(city);
+                    city.setSubarea(areas);
+                    province.getSubarea().add(city);
                 }
             }
         }

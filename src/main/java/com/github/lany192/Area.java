@@ -16,7 +16,7 @@ public class Area {
     /**
      * 该地区下辖地区
      */
-    private List<Area> children;
+    private List<Area> subarea;
 
     public String getId() {
         return id;
@@ -34,12 +34,12 @@ public class Area {
         this.name = name;
     }
 
-    public List<Area> getChildren() {
-        return children;
+    public List<Area> getSubarea() {
+        return subarea;
     }
 
-    public void setChildren(List<Area> children) {
-        this.children = children;
+    public void setSubarea(List<Area> subarea) {
+        this.subarea = subarea;
     }
 }
 
