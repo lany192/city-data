@@ -52,7 +52,8 @@ public class MainGetData {
     private static void printSQl(Area area, List<Area> subarea) {
         if (subarea != null && subarea.size() > 0) {
             for (Area item : subarea) {
-                System.out.println("INSERT INTO `sys_area` VALUES (" + item.getId() + ", " + area.getId() + ", '" + item.getName() + "');");
+                System.out.println("items.add(new City(\"" + item.getId() + "\", \"" + item.getName() + "\"));");
+                //System.out.println("INSERT INTO `sys_area` VALUES (" + item.getId() + ", " + area.getId() + ", '" + item.getName() + "');");
                 printSQl(item, item.getSubarea());
             }
         }
